@@ -4,7 +4,7 @@ import { userSlice } from './reducers'
 
  const store = configureStore({
     reducer: {
-        user: userSlice.reducer
+        session: userSlice.reducer
     }
  })
 

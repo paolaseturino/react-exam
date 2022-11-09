@@ -1,31 +1,31 @@
 import React from 'react';
 import './App.css';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Router, Routes } from 'react-router-dom';
 
 import Login from "./Pages/Login/Login"
 import Upload  from './Pages/Upload/Upload';
 import Employees from "./Pages/Employees/Employees"
-
+import store from './Redux/store';
 
 const App = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route
           path='/'
-          element={<Login/>}
+          element={ <Login/>}
         />
         <Route
           path='/employees'
-          element={<Employees/>}
+          element={ <Employees/>}
         />
         <Route
           path='/upload'
-          element={<Upload/>}
+          element={<Upload/> }
         />
       </Routes>
       
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
