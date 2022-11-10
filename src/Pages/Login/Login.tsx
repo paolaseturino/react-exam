@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { redirect, useNavigate } from 'react-router-dom';
-import { login } from '../../Redux/actions';
+import { login } from '../../Redux/reducers';
+import { userSlice } from '../../Redux/reducers';
+import store from '../../Redux/store';
 
 const users = [
     {
@@ -17,6 +20,7 @@ export default function Login() {
 
     const [message, setMessage] = useState("")
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -33,6 +37,7 @@ export default function Login() {
             
             } else {
                 setMessage("ok")
+                dispatch(login())
                 navigate('/employees')
             }
         } else {

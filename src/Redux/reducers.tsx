@@ -1,23 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
 interface SessionState {
-    value: boolean
+    auth: boolean
   }
 
 const initialState: SessionState = {
-    value: false,
+  auth: false,
   }
 
 export const userSlice = createSlice({
     name: 'session',
     // `createSlice` will infer the state type from the `initialState` argument
-    initialState,
+    initialState: {
+      auth: false
+    },
     reducers: {
       login: (state) => {
-        state.value = true
+        state.auth = true
       },
       logout: (state) => {
-        state.value = false
+        state.auth = false
       }
     },
 })

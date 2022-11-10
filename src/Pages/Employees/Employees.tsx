@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, IconButton, Table, TableBody, TablePagination, TextField } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -5,6 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ChangeEventHandler, useEffect, useState } from 'react';
+import EmployeeForm from './EmployeeForm';
 
 interface Employee {
     name : string;
@@ -23,6 +25,7 @@ export default function Employees() {
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [page, setPage] = useState(0);
     const [searched, setSearched] = useState<string>("");
+    const [openForm, setOpenForm] = useState<boolean>(false)
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
@@ -51,27 +54,33 @@ export default function Employees() {
         Search(searched);
     };
 
+    const handleAddEmploye = () => {
+        setOpenForm(true)
+    }
+    
+    const dataFetch =async () => {
+        const data = await(
+            await fetch('https://6edeayi7ch.execute-api.us-east-1.amazonaws.com/v1/examen/employees/paola_corral')
+        ).json()
+        setEmployees(data.data.employees)
+        setFilterEmployes(data.data.employees)
+    }
+
     useEffect(() => {
-        const dataFetch =async () => {
-            const data = await(
-                await fetch('https://6edeayi7ch.execute-api.us-east-1.amazonaws.com/v1/examen/employees/paola_corral')
-            ).json()
-            setEmployees(data.data.employees)
-            setFilterEmployes(data.data.employees)
-        }
+        
         dataFetch()
         
         
       },[])
 
-    return (
-        
+    return ( 
         <div>
             <TextField 
                 value={searched}
                 onChange={requestSearch}
             />
             <Button onClick={cancelSearch}>X</Button>
+            <Button onClick={handleAddEmploye}>Add Employee</Button>
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -111,6 +120,7 @@ export default function Employees() {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <EmployeeForm open={openForm} setOpen={setOpenForm} update={dataFetch} />
         </div>
         
       );
