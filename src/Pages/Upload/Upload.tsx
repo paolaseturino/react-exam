@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
+import './Upload.css'
 
 export default function Upload() {
   const fileTypes = ["JPEG", "PNG", "GIF"];
@@ -38,9 +39,9 @@ export default function Upload() {
     }, [selectedFile])
 
     return (
-        <div>
-          <h1> Drag & Drop Images</h1>
-          <form>
+        <div className='root'>
+          <h1 className='title'> Drag & Drop Images</h1>
+          <form className='form'>
             <FileUploader
               multiple={true}
               handleChange={handleChange}
@@ -48,10 +49,17 @@ export default function Upload() {
               types={fileTypes}
             />
           </form>
-          {count > 0 ? <Button onClick={() => {handleChangeImage(-1)}} >{"<"}</Button> : null}
-          {files? <img src={preview}/>: ""}
-          {count < files.length -1 ? <Button onClick={() => {handleChangeImage(1)}}>{">"}</Button> : null}
-          <p>{selectedFile ? `File name: ${selectedFile.name}` : "no files uploaded yet"}</p>
+          <div className='image-container'>
+            {count > 0 ? <Button variant="contained" className='button' onClick={() => {handleChangeImage(-1)}} >
+              {"<"}
+              </Button> : null}
+            {files? <img className='image' src={preview}/>: ""}
+            {count < files.length -1 ? <Button variant="contained" className='button' onClick={() => {handleChangeImage(1)}}>
+              {">"}
+              </Button> : null}
+          </div>
+          
+          <p>{selectedFile ? `File name: ${selectedFile.name}` : "No files uploaded yet"}</p>
         </div>
       );
 }

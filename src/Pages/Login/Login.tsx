@@ -54,6 +54,7 @@ export default function Login() {
     return ( 
         <div className='root'>
             <form className='form' onSubmit={handleSubmit}>
+              <h1 className='title'>Login</h1>
                 <div className='input-container'>
                     <label>User</label>
                     <input type="text" required
@@ -66,7 +67,7 @@ export default function Login() {
                         onPaste={handleCopyPaste}
                         onCopy={handleCopyPaste} />
                 </div>
-                <input   type="submit"/>
+                <input className='input-button' type="submit"/>
                 <p>{message}</p>
             </form>
         </div>

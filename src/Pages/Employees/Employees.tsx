@@ -5,8 +5,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { ChangeEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import EmployeeForm from './EmployeeForm';
+import './Employees.css'
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Employee {
     name : string;
@@ -57,7 +59,7 @@ export default function Employees() {
     const handleAddEmploye = () => {
         setOpenForm(true)
     }
-    
+
     const dataFetch =async () => {
         const data = await(
             await fetch('https://6edeayi7ch.execute-api.us-east-1.amazonaws.com/v1/examen/employees/paola_corral')
@@ -74,14 +76,23 @@ export default function Employees() {
       },[])
 
     return ( 
-        <div>
-            <TextField 
-                value={searched}
-                onChange={requestSearch}
-            />
-            <Button onClick={cancelSearch}>X</Button>
-            <Button onClick={handleAddEmploye}>Add Employee</Button>
-            <TableContainer component={Paper}>
+        <div className='root'>
+            <div className='header'>
+                <div>
+                    <TextField 
+                        className='search-input'
+                        value={searched}
+                        onChange={requestSearch}
+                    />
+                    <IconButton className='cancel-button' onClick={cancelSearch}>
+                        <CloseIcon/>
+                    </IconButton >
+                </div>
+                
+                <Button variant="contained" className='button' onClick={handleAddEmploye}>Add Employee</Button>
+            </div>
+            
+            <TableContainer className='table-container' component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>

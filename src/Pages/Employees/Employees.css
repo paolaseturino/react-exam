@@ -1,0 +1,33 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    margin: 50px;
+}
+
+.search-input {
+    width: 800px;
+    
+}
+
+.cancel-button {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.button {
+    margin: auto;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 10px;
+    margin-inline: 20px;
+}

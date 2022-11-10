@@ -1,0 +1,30 @@
+.root {
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+
+}
+
+.form {
+    margin: auto;
+    margin-top: 10px;
+}
+
+.button {
+    font-size: large;
+}
+
+.image {
+    max-width: 300px;
+    margin: auto;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: row;
+    margin-inline: 300px;
+    justify-content: space-between;
+}
