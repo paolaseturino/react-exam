@@ -1,3 +1,7 @@
+Password an user that works:
+-user1 / pass1
+-user2 / pass2
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

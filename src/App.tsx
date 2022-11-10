@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { BrowserRouter, HashRouter, Navigate, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import Login from "./Pages/Login/Login"
 import Upload  from './Pages/Upload/Upload';
 import Employees from "./Pages/Employees/Employees"
 import store from './Redux/store';
-import { useSelector } from 'react-redux';
 import NavBar from './Pages/NavBar/navBar';
 
 const App = () => {
@@ -24,7 +23,7 @@ const App = () => {
             path='/employees'
             element={  (
               <>
-                <NavBar/>
+                <NavBar title="Employees"/>
                 <PrivateWrapper>
                   <Employees/>
                 </PrivateWrapper>
@@ -35,7 +34,7 @@ const App = () => {
             path='/upload'
             element={(
               <>
-                <NavBar/>
+                <NavBar title="Upload File"/>
                 <PrivateWrapper>
                   <Upload/> 
                 </PrivateWrapper>
@@ -47,7 +46,7 @@ const App = () => {
           path='*'
           element={ 
           <>
-            <NavBar/>
+            <NavBar title="Login"/>
             <Login/>
           </>}
         />

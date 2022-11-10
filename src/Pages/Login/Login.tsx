@@ -1,9 +1,10 @@
+
+
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../Redux/reducers';
-import { userSlice } from '../../Redux/reducers';
-import store from '../../Redux/store';
+import "./Login.css"
 
 const users = [
     {
@@ -51,8 +52,8 @@ export default function Login() {
       } 
 
     return ( 
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='root'>
+            <form className='form' onSubmit={handleSubmit}>
                 <div className='input-container'>
                     <label>User</label>
                     <input type="text" required
