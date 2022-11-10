@@ -12,7 +12,7 @@ const App = () => {
 
   const PrivateWrapper = ({ children }: { children: JSX.Element }) => {
     const auth = store.getState().session.auth
-    return true ? children : <Navigate to="/" replace />;
+    return auth ? children : <Navigate to="/" replace />;
   };
   
   return (
